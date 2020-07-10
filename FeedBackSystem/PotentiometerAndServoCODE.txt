@@ -1,0 +1,22 @@
+#include <Servo.h>
+
+int SensorValue = 0;
+
+int outputValue = 0;
+
+Servo servo_8;
+
+void setup()
+{
+  pinMode(A0, INPUT);
+  servo_8.attach(8);
+
+}
+
+void loop()
+{
+  SensorValue = analogRead(A0);
+  outputValue = map(SensorValue, 0, 1023, 0, 180);
+  servo_8.write(outputValue);
+  delay(10); // Delay a little bit to improve simulation performance
+}
